@@ -1,0 +1,73 @@
+[System]
+Name='autoControl'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Error'
+Range=[-15 15]
+NumMFs=5
+MF1='LN':'trapmf',[-Inf -Inf -12 -8.1]
+MF2='MN':'trimf',[-10 -6 -3]
+MF3='ZERO':'trimf',[-4 -1 1]
+MF4='MP':'trimf',[0 6 10.85]
+MF5='LP':'trapmf',[7.5 15 Inf Inf]
+
+[Input2]
+Name='ErrorDer'
+Range=[-15 15]
+NumMFs=5
+MF1='LN':'trapmf',[-Inf -Inf -14.3 -8.2]
+MF2='MN':'trimf',[-15 -7.5 0]
+MF3='ZERO':'trimf',[-7.5 0 7.5]
+MF4='MP':'trimf',[0 7.5 15]
+MF5='LP':'trapmf',[7.5 15 Inf Inf]
+
+[Output1]
+Name='Control'
+Range=[-1.5 1.5]
+NumMFs=9
+MF1='AVHN':'trapmf',[-Inf -Inf -1.5 -1.125]
+MF2='AHN':'trimf',[-1.5 -1.125 -0.75]
+MF3='AMN':'trimf',[-1.125 -0.75 -0.375]
+MF4='ASN':'trimf',[-0.75 -0.375 0]
+MF5='ANO':'trimf',[-0.375 0 0.375]
+MF6='ASP':'trimf',[0 0.375 0.75]
+MF7='AMP':'trimf',[0.375 0.75 1.125]
+MF8='AHP':'trimf',[0.75 1.125 1.5]
+MF9='AVHP':'trapmf',[1.125 1.5 Inf Inf]
+
+[Rules]
+1 1, 9 (1) : 1
+1 2, 9 (1) : 1
+1 3, 8 (1) : 1
+1 4, 8 (1) : 1
+1 5, 7 (1) : 1
+2 1, 9 (1) : 1
+2 2, 8 (1) : 1
+2 3, 7 (1) : 1
+2 4, 7 (1) : 1
+2 5, 6 (1) : 1
+3 1, 6 (1) : 1
+3 2, 6 (1) : 1
+3 3, 5 (1) : 1
+3 4, 4 (1) : 1
+3 5, 4 (1) : 1
+4 1, 4 (1) : 1
+4 2, 3 (1) : 1
+4 3, 3 (1) : 1
+4 4, 2 (1) : 1
+4 5, 2 (1) : 1
+5 1, 3 (1) : 1
+5 2, 2 (1) : 1
+5 3, 2 (1) : 1
+5 4, 1 (1) : 1
+5 5, 1 (1) : 1
